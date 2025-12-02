@@ -1,2 +1,4 @@
 # To ignore
 *\dev
+# But allow screenshots
+!*\dev\screenshots
