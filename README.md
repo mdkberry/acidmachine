@@ -1,6 +1,6 @@
 # Acid Machine
 
-A forke of the original web-based music sequencer that became [Acid Machine](https://errozero.co.uk/acid-machine/). This fork aims to add MIDI export functionality for use with DAWs like Reaper.
+A fork of the original web-based music sequencer that became [Acid Machine](https://errozero.co.uk/acid-machine/). This fork aims to add MIDI export functionality for use with DAWs like Reaper.
 
 ## Features
 
@@ -128,7 +128,7 @@ php -S localhost:8000
 
 ## Contributing
 
-Contributions are welcome! This project is in active development with plans to add MIDI export functionality.
+This project is in active development with plans to add MIDI export functionality.
 
 ## License
 
