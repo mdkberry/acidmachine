@@ -1,42 +1,83 @@
-# acidmachine
+# Acid Machine
 
-*I love the simplicity of the original this fork was based on - https://errozero.co.uk/acid-machine/  and wanted to make a version that I could use but be able to export as midi files to Reaper, so going to see if I can do that here.*
+A web-based music sequencer inspired by the simplicity of the original [Acid Machine](https://errozero.co.uk/acid-machine/). This fork aims to add MIDI export functionality for use with DAWs like Reaper.
 
-## Installation on Windows for VSCode use
+## Features
 
-1. Clone the Repo.
-Open Command Prompt.
-Navigate to your projects folder: cd C:\Users\[YourUsername]\Documents\Projects (create if needed: mkdir Projects).
-Clone: git clone https://github.com/mdkberry/acidmachine.git
-This creates an acidmachine folder.
-cd into it: `cd acidmachine`.
+- Web-based music sequencer
+- 303 bass and drum patterns
+- Interactive grid interface
+- Planned MIDI export functionality
 
-2. Setup in VSCode
-Launch VSCode > File > Open Folder > Select the acidmachine folder.
-In VSCode: Ctrl+Shift+X (Extensions view).
-Search: "PHP Server" (by brapifra).
-Click Install (free, no restarts needed).
-Optional: Also install "PHP Intelephense" (by Ben Mewburn. alt. Intelephense) for syntax highlighting/linting if you plan heavy edits.
+## Installation on Windows for VSCode
 
-3. PHP setup
-Download the latest stable PHP for Windows (8.3.x or 8.2.x—Thread Safe version) from the official site: php.net/downloads/windows > Click "ZIP" under "VS16 x64 Thread Safe".
-Extract the ZIP to a simple folder like C:\php. This keeps it clean—no installer required.
-Verify: Open Command Prompt (Win+R > cmd) > Run `C:\php\php.exe --version`. Should output something like "PHP 8.3.12". If not, redownload.
-Add PHP to Your System PATH (Global Fix):
-This lets VSCode (and the extension) find PHP automatically.
-Right-click This PC (or My Computer) on desktop/start menu > Properties > Advanced system settings (right sidebar).
-Click Environment Variables (bottom).
-Under "System variables" (bottom section), find Path > Select it > Edit.
-Click New > Paste C:\php (your extract path) > OK all the way out.
-Restart VSCode (close fully, reopen) and Command Prompt (for good measure).
-Test: In new cmd, run `php --version` should work without full path.
+### Prerequisites
 
-3. Configure VSCode Settings (Extension-Specific Fix)
-Even with PATH set, tell the PHP Server where PHP lives.
-In VSCode: `Ctrl+,` (comma) to open Settings.
-Search: "php executable path" or "phpserver.phpPath".
-Under Extensions > PHP Server, find PHP Path (or PHP Executable Path) > Click "Edit in settings.json" (top right).
-Add/update these lines in the JSON (replace with your path):JSON
+- [Git](https://git-scm.com/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [PHP](https://www.php.net/downloads.php) (Thread Safe version, 8.2.x or 8.3.x recommended)
+
+### Step 1: Clone the Repository
+
+```bash
+# Open Command Prompt
+cd C:\Users\[YourUsername]\Documents\Projects
+
+# Create projects folder if needed
+mkdir Projects
+
+# Clone the repository
+git clone https://github.com/mdkberry/acidmachine.git
+
+# Navigate to the project
+cd acidmachine
+```
+
+### Step 2: Setup in VSCode
+
+1. Launch VSCode
+2. File → Open Folder → Select the `acidmachine` folder
+3. Install required extensions:
+   - **PHP Server** (by brapifra) - for running the local server
+   - **PHP Intelephense** (by Ben Mewburn) - for syntax highlighting and linting (optional)
+
+### Step 3: PHP Configuration
+
+1. **Download PHP**:
+   - Visit [php.net/downloads/windows](https://www.php.net/downloads.php)
+   - Download the "VS16 x64 Thread Safe" ZIP version
+
+2. **Extract PHP**:
+   ```bash
+   # Extract to a simple location
+   C:\php\
+   ```
+
+3. **Verify Installation**:
+   ```bash
+   C:\php\php.exe --version
+   # Should output something like "PHP 8.3.12"
+   ```
+
+4. **Add PHP to System PATH**:
+   - Right-click "This PC" → Properties → Advanced system settings
+   - Click "Environment Variables"
+   - Under "System variables", find "Path" → Edit
+   - Click "New" → Add `C:\php`
+   - Click "OK" to save all changes
+   - Restart VSCode and Command Prompt
+
+5. **Test PATH**:
+   ```bash
+   php --version
+   # Should work without specifying full path
+   ```
+
+### Step 4: Configure VSCode Settings
+
+1. Open VSCode Settings: `Ctrl+,`
+2. Search for "php executable path" or "phpserver.phpPath"
+3. Edit `settings.json` and add:
 
 ```json
 {
@@ -44,32 +85,53 @@ Add/update these lines in the JSON (replace with your path):JSON
   "phpserver.phpPath": "C:\\php\\php.exe"
 }
 ```
-Save the file (Ctrl+S). If it grays out, that's fine, it's just deprecated but still works.
-Reload VSCode window: Ctrl+Shift+P > "Developer: Reload Window".
 
-4. Open in browser
-Step 4: Test the Fix
+4. Save the file (`Ctrl+S`)
+5. Reload VSCode window: `Ctrl+Shift+P` → "Developer: Reload Window"
 
-Open your acidmachine folder in VSCode.
-Left-click (or right-click) index.php > PHP Server: Serve project (should now appear without error).
-Status bar shows http://localhost:3000 
-click it. Browser loads the rendered Acid Machine (synth controls, drum pads, etc.).
-If audio/JS works: Play button loops the 303 bass + drums. Toggle pads for live grid plotting.
+### Step 5: Run the Application
 
-5. If It Still Fails
+1. In VSCode, right-click `index.php` → "PHP Server: Serve project"
+2. Status bar should show: `http://localhost:3000`
+3. Click the link to open in your browser
+4. The Acid Machine interface should load with synth controls and drum pads
+5. Test functionality:
+   - Click "Play" to loop 303 bass + drums
+   - Toggle pads for live grid plotting
 
-Check Output Logs: Ctrl+Shift+U (Output panel) > Dropdown > "PHP Server" or "PHP Language Server". Look for clues (e.g., "php.exe not found")—paste here if needed.
+### Troubleshooting
 
-Or try CTRL+SHIFT+P > "PHP Server: Reload server" (this sorted it when I had the index.php open in VSCode at same time it loaded it into the browser automatically so check notes about that in PHP Server brapifra setup for further approaches if you use that one.)
+#### Check Output Logs
+- Open Output panel: `Ctrl+Shift+U`
+- Select "PHP Server" or "PHP Language Server" from dropdown
+- Look for error messages
 
-Common Gotchas:
-Wrong PHP version: Use Thread Safe (TS) for Windows servers.
-Antivirus/Firewall: Allow php.exe if blocked.
-Workspace Settings: If project-specific, add the JSON to .vscode/settings.json in your repo root.
+#### Reload Server
+If issues persist:
+- `Ctrl+Shift+P` → "PHP Server: Reload server"
 
-Fallback Launch: Terminal (Ctrl+) > php -S localhost:8000 in project root > Browser tohttp://localhost:8000/index.php`. (Bypasses extension.)
+#### Common Issues
 
-This should zap the notification—it's usually just PATH/executable config. Once fixed, you're golden for editing that PHP-generated grid. If logs show something else (e.g., "logger.php" missing from ), we can patch that too!
+- **Wrong PHP version**: Ensure you're using Thread Safe (TS) version for Windows
+- **Antivirus/Firewall**: Allow `php.exe` if blocked
+- **Project-specific settings**: Add the JSON configuration to `.vscode/settings.json` in your project root
 
+#### Fallback Method
+If the extension fails, use the terminal method:
+```bash
+# In VSCode terminal
+php -S localhost:8000
+
+# Open browser to:
+# http://localhost:8000/index.php
+```
+
+## Contributing
+
+Contributions are welcome! This project is in active development with plans to add MIDI export functionality.
+
+## License
+
+[Add license information here]
 
 
