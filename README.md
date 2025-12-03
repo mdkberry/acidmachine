@@ -4,7 +4,7 @@ Forked from https://github.com/hitautodestruct/acidmachine . This is the origina
 
 This fork aims to add MIDI export functionality for use with DAWs like Reaper.
 
-![Acid Machine - Original First Run Screenshot](dev/screenshots/original-first-run-1.png)
+![Acid Machine - Original First Run Screenshot](/screenshots/original-first-run-1.png)
 
 ## Features
 
